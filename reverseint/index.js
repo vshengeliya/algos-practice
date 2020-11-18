@@ -8,6 +8,7 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
+//1 st solution
 function reverseInt(n) {
 
     let reversed;
@@ -19,6 +20,11 @@ function reverseInt(n) {
     return reversed
 }
 
+  // 2nd solution
+  function reverseInt2(n){
+    let reversed = n.toString().split('').reverse().join('')
+    return parseInt(reversed) * Math.sign(n);
+}
 console.log(reverseInt(-5))
 
 //Math.sign() returns 1 is positive number, return 0 if negative number

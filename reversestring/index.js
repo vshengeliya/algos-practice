@@ -6,6 +6,7 @@
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
 
+//1st solution
 function reverse(str) {
     let reversed = '';
     for (let character of str){
