@@ -17,14 +17,13 @@ function reverse(str) {
 
 module.exports = reverse;
 
-//another solution
-// function reverse(str){
-//     let reversedStr = [...str].reverse().join('')
-//     return reversedStr
-// }
+//2nd solution
+function reverse(str){
+    let reversedStr = [...str].reverse().join('')
+    return reversedStr
+}
 
-
-
-// function reverse(str) {
-//     return str.split('').reduce((rev, char) => char+ rev , '')
-//   }
+//3rd solution
+function reverse(str) {
+    return str.split('').reduce((rev, char) => char+ rev , '')
+  }
