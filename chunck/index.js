@@ -29,3 +29,21 @@ function chunk(array, size) {
  return chunked;
 
 }
+
+// 2nd solution
+// Create empty 'chunked' array
+//Create 'indexi' at 0
+//While index is less that arrray.length
+ //Push a slice of lenth 'size' from 'array'
+ // Add 'size' to 'index'
+
+ function chunk (array, size){
+    const chunked = [];
+    let index  = 0;
+
+    while (index < array.length){
+        chunked.push(array.slice(index, index + size));
+        index += size;
+    }
+  return chunked
+ }
