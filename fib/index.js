@@ -8,13 +8,26 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {
-    if ( n < 2) {
-        return n;
-    }
+function memoize(fn) {
+    const cache={}; // creating a record of all of the previous calls of the slowFib fucntion and store it
+    return function(...args) { // returtning an anonimus function that is or fib function in the last line of code with arguments //that recived to out slowFin fucntion, example: fib(5)
+      if (cache[args]) {
+        return cache[args];
+      };
+      const result = fn.apply(this, args);
+      cache[args] = result;
+      return result;
+    };
+ };
 
-    return fib(n - 1) + fib(n - 2);
-}
+ function slowFib(n) {
+     if ( n < 2) {
+    return n;
+    }
+     return fib(n - 1) + fib(n - 2);
+ };
+
+ const fib = memoize(slowFib);
 
 // function fib(n) {
 
@@ -29,7 +42,6 @@ function fib(n) {
 //     return result[result.length-1]
 
 // }
-//test
 
 
 module.exports = fib;
