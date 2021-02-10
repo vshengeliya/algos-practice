@@ -20,8 +20,11 @@ class LinkedList {
        const node = new Node(data, this.head) //create a new Node with some data and pass an existing node, so the new node can be fist
        this.head = node// reassign the rerrerence to the head with a new node 
 
-       //or simply:
+    //or simply:
     //  this.head = new Node(data, this.head)
+
+    //2nd soltuon:
+    //this.insertAt(data, 0)
     }
 
     size() {
@@ -38,6 +41,10 @@ class LinkedList {
 
     getFirst() {
         return this.head //first element of the linked list is always a head
+
+
+        //2ND solution
+        // return getAt(0)
     }
 
     getLast() {
@@ -54,6 +61,10 @@ class LinkedList {
             } //otherwise
             node = node.next; // reassign out node --> next node and continie the while loop
         }
+
+        //2nd Solution:
+        // return this.getAt(this.size()-1)
+
     }
 
     clear(){
@@ -67,6 +78,7 @@ class LinkedList {
              return;
             }
         this.head = this.head.next //remove first node by addigning the head to the next node
+
     }
 
     removeLast(){
@@ -89,6 +101,7 @@ class LinkedList {
         }// else
 
         previous.next = null;//remove the last element by assigning it to null.
+
     }
 
     insertLast(data) {
@@ -140,6 +153,55 @@ class LinkedList {
         previous.next = next // reestablish the connection skipping the cirrent node
         // previous.next = previous.next.next // as another version 
 
+    }
+
+    insertAt(data, index) {
+
+        //insert a node to an empty list
+        //index is out of bounce 12, add to the very end;
+        // use getAt method to get a reference to the prevous node
+        //carete the new node
+        //new node point to the 
+        
+        if(!this.head) {
+            this.head = new Node(data); //if our list is empty, create a fist node with the head
+            return;
+        }
+
+        if(index === 0) {
+            this.head = new Node (data, this.head); // if we need to insert the noew node to the beginning of the linked list - 
+            //assign new node and make next agr to an old head
+            return;
+        }
+
+       let previous =  this.getAt(index-1) || this.getLast(); // previous is the one before the new one that had to be insert or the last element in the linked list
+       // if the index is out of bounce 
+       let node = new Node(data, previous.next); // create a node and reassign the next node of the newly created node
+
+       previous.next = node //change the reference of next to the new node
+
+    }   
+
+    forEach(fn) {
+
+        let node = this.head;
+        let counter = 0;
+
+        while(node){
+            fn(node, counter);
+            node  = node.next;
+            counter++;
+        }
+    }
+
+    //need to know how Generators work
+    *[Symbol.iterator]() {
+        
+        let node = this.head;
+        while(node){
+            yield node;
+            node = node.next
+        }
     }
 }
 
