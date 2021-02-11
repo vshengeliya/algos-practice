@@ -14,12 +14,16 @@ function anagrams(stringA, stringB) {
 
 function cleanString(str){
     return str
-    .replace(/[^\w]/g,'')
+    .replace(/[^\w]/g,'') //use regexpressions
     .toLowerCase()
     .split('')
     .sort()
     .join('')
 }
+
+console.log(cleanString('rail safety', 'Fairy tales'))
+
+console.log(anagrams('rail safety', 'fairy tales'))
 
 //2nd solution
 
